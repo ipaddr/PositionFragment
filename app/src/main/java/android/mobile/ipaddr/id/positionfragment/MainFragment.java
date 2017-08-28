@@ -58,27 +58,4 @@ public class MainFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
-
-    private static final String BUNDLE_RECYCLER_LAYOUT = "classname.recycler.layout";
-
-    /**
-     * This is a method for Fragment.
-     * You can do the same in onCreate or onRestoreInstanceState
-     */
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-
-        if(savedInstanceState != null)
-        {
-            Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
-            recyclerView.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState);
-        }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelable(BUNDLE_RECYCLER_LAYOUT, recyclerView.getLayoutManager().onSaveInstanceState());
-    }
 }
